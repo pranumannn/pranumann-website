@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Neon Racer</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background-color: #000;
+      font-family: 'Courier New', monospace;
+      color: #0ff;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 20px 0 10px;
+      font-size: 2em;
+      text-shadow: 0 0 10px #0ff;
+    }
+
+    .game {
+      width: 90%;
+      max-width: 320px;
+      height: 500px;
+      margin: 0 auto;
+      border: 3px solid #0ff;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(to bottom, #111, #000);
+      border-radius: 10px;
+      box-shadow: 0 0 20px #0ff;
+    }
+
+    .car {
+      width: 50px;
+      height: 80px;
+      position: absolute;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #0ff;
+    }
+
+    #player {
+      background: #0ff;
+      bottom: 20px;
+      left: 135px;
+    }
+
+    .enemy {
+      background: #f00;
+      box-shadow: 0 0 15px red;
+    }
+
+    .road-line {
+      width: 10px;
+      height: 80px;
+      background: #fff;
+      position: absolute;
+      left: 155px;
+      top: 0;
+      opacity: 0.5;
+    }
+
+    .score {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 0 0 5px #0ff;
+    }
+
+    #startBtn {
+      padding: 10px 25px;
+      background: #111;
+      color: #0ff;
+      border: 2px solid #0ff;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+      font-size: 1em;
+      box-shadow: 0 0 10px #0ff;
+    }
+
+    #startBtn:hover {
+      background: #0ff;
+      color: #000;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 15px;
+    }
+
+    .ctrl-btn {
+      background: #111;
+      color: #0ff;
+      border: 2px solid #0ff;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 1.5em;
+      box-shadow: 0 0 10px #0ff;
+    }
+
+    .ctrl-btn:active {
+      background: #0ff;
+      color: #000;
+    }
+
+    @media (min-width: 768px) {
+      .controls {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>🚗 Neon Racer</h1>
+  <div class="game">
+    <div class="score">Score: <span id="score">0</span></div>
+    <div id="player" class="car"></div>
+    <div id="enemy1" class="car enemy"></div>
+    <div id="enemy2" class="car enemy"></div>
+    <div class="road-line" id="line1"></div>
+    <div class="road-line" id="line2"></div>
+    <div class="road-line" id="line3"></div>
+  </div>
+
+  <div class="controls">
+    <button class="ctrl-btn" onclick="moveLeft()">←</button>
+    <button class="ctrl-btn" onclick="moveRight()">→</button>
+  </div>
+
+  <button id="startBtn" onclick="startGame()">Start Game</button>
+
+  <script>
+    let player, enemies, scoreDisplay, gameInterval, score = 0;
+
+    function startGame() {
+      player = document.getElementById("player");
+      enemies = [document.getElementById("enemy1"), document.getElementById("enemy2")];
+      scoreDisplay = document.getElementById("score");
+      score = 0;
+      document.getElementById("startBtn").disabled = true;
+
+      enemies.forEach((enemy, index) => {
+        enemy.style.top = (-150 * (index + 1)) + "px";
+        enemy.style.left = [50, 200][index] + "px";
+      });
+
+      document.getElementById("line1").style.top = "0px";
+      document.getElementById("line2").style.top = "-200px";
+      document.getElementById("line3").style.top = "-400px";
+
+      gameInterval = setInterval(gameLoop, 20);
+      document.addEventListener("keydown", handleKeyboard);
+    }
+
+    function handleKeyboard(e) {
+      if (e.key === "ArrowLeft") moveLeft();
+      else if (e.key === "ArrowRight") moveRight();
+    }
+
+    function moveLeft() {
+      let left = parseInt(window.getComputedStyle(player).getPropertyValue("left"));
+      if (left > 0) player.style.left = (left - 10) + "px";
+    }
+
+    function moveRight() {
+      let left = parseInt(window.getComputedStyle(player).getPropertyValue("left"));
+      if (left < 270) player.style.left = (left + 10) + "px";
+    }
+
+    function gameLoop() {
+      moveEnemies();
+      moveRoadLines();
+      checkCollision();
+      score++;
+      scoreDisplay.textContent = score;
+    }
+
+    function moveEnemies() {
+      enemies.forEach(enemy => {
+        let top = parseInt(window.getComputedStyle(enemy).getPropertyValue("top"));
+        if (top >= 500) {
+          enemy.style.top = "-100px";
+          enemy.style.left = (Math.random() * 250) + "px";
+        } else {
+          enemy.style.top = (top + 5 + score / 300) + "px";
+        }
+      });
+    }
+
+    function moveRoadLines() {
+      for (let i = 1; i <= 3; i++) {
+        let line = document.getElementById("line" + i);
+        let top = parseInt(window.getComputedStyle(line).getPropertyValue("top"));
+        line.style.top = (top >= 500 ? -80 : top + 10) + "px";
+      }
+    }
+
+    function checkCollision() {
+      enemies.forEach(enemy => {
+        if (isCollide(player, enemy)) {
+          clearInterval(gameInterval);
+          alert("💥 Game Over! Your score: " + score);
+          document.getElementById("startBtn").disabled = false;
+        }
+      });
+    }
+
+    function isCollide(a, b) {
+      let aRect = a.getBoundingClientRect();
+      let bRect = b.getBoundingClientRect();
+      return !(
+        aRect.bottom < bRect.top ||
+        aRect.top > bRect.bottom ||
+        aRect.right < bRect.left ||
+        aRect.left > bRect.right
+      );
+    }
+  </script>
+</body>
+</html>

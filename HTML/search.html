@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search Result | Pranumann</title>
+  <link rel="icon" href="profile.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      text-align: center;
+    }
+
+    .result-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 30px;
+      max-width: 700px;
+      margin: 40px auto;
+      border-radius: 15px;
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #ddd;
+    }
+
+    .question {
+      font-weight: 600;
+      color: #ffcc00;
+    }
+
+    .answer {
+      font-weight: 500;
+      margin-top: 10px;
+      color: #a0e0ff;
+    }
+
+    .no-result {
+      color: #ff4c4c;
+      font-style: italic;
+      margin-top: 15px;
+    }
+
+    a.back-btn {
+      margin-top: 30px;
+      display: inline-block;
+      padding: 10px 25px;
+      background: white;
+      color: #0a1e30;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 30px;
+      transition: 0.3s;
+    }
+
+    a.back-btn:hover {
+      background: #ffcc00;
+      color: #000;
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="result-box" id="result-box">
+    <!-- Answer will be shown here -->
+  </div>
+
+  <a href="paro.html" class="back-btn">← Back to Home</a>
+
+  <footer>
+    &copy; 2025 Pranumann | Powered by Praveen Yadav | Dumka Engineering College
+  </footer>
+
+  <script>
+    const answers = {
+      "who is praveen yadav": "Praveen Yadav is a B.Tech CSE student at Dumka Engineering College and the creator of this portfolio.",
+      "where does praveen study": "He studies at Dumka Engineering College, affiliated with Jharkhand University of Technology.",
+      "what is this website about": "This is the official portfolio of Praveen Yadav, showcasing his photos, videos, achievements and more.",
+      "how can i contact praveen": "You can reach out via the Contact page or email: workformonarch@gmail.com",
+      "what is pranumann": "Pranumann is the personal brand and digital identity of Praveen Yadav, representing his creativity and work online."
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get("q");
+
+    const resultBox = document.getElementById("result-box");
+
+    if (query) {
+      const normalized = query.trim().toLowerCase();
+      if (answers[normalized]) {
+        resultBox.innerHTML = `
+          <h1>Search Result</h1>
+          <p class="question">Q: ${query}</p>
+          <p class="answer">A: ${answers[normalized]}</p>
+        `;
+      } else {
+        resultBox.innerHTML = `
+          <h1>Search Result</h1>
+          <p class="question">Q: ${query}</p>
+          <p class="no-result">No results found. Answer has not been added by the owner yet.</p>
+        `;
+      }
+    } else {
+      resultBox.innerHTML = `
+        <h1>Oops!</h1>
+        <p class="no-result">No query was provided. Please search from the home page.</p>
+      `;
+    }
+  </script>
+</body>
+</html>

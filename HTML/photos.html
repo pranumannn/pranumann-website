@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Photos | Praveen Yadav</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://images.unsplash.com/photo-1587202372775-d519f31e41ad?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+      color: white;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(10, 15, 30, 0.8);
+      z-index: -1;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 25px;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #ffd700;
+    }
+
+    .section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #fff;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .gallery img {
+      width: 180px;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 2px solid #ffd700;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #fff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+
+    footer a {
+      color: #ffd700;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div style="display: flex; align-items: center;">
+    <img src="pranumann.jpg" alt="Praveen Yadav Profile Photo" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 12px; box-shadow: 0 0 5px #ffd700;">
+    <div class="logo">Praveen Yadav</div>
+  </div>
+  <nav>
+    <a href="paro.html">Home</a>
+  </nav>
+</header>
+
+
+<section class="section">
+  <h2>Photo Gallery</h2>
+  <div class="gallery">
+    <img src="IMG_20250422_013958.jpg" alt="Photo ">
+    <img src="1751256279305.jpg" alt="Photo 1">
+    <img src="1748457056820.jpg" alt="Photo 2">
+    <img src="pranumann.jpg" alt="Photo 3">
+    <img src="slide1.jpg" alt="Photo 4">
+    <img src="IMG_20250422_013941.jpg" alt="Photo 5">
+    <img src="slide3.jpg" alt="Photo 6">
+    <img src="slide2.jpg" alt="Photo 7">
+    <!-- Add more images as needed -->
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 Praveen Yadav | <a href="paro.html">⬅ Back to Home</a>
+</footer>
+
+</body>
+</html>
+

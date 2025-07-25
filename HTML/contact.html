@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Pranumann</title>
+  <link rel="icon" href="profile.png" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      font-family: 'Segoe UI', sans-serif;
+      height: 100%;
+      color: white;
+      position: relative;
+      text-align: center;
+      padding: 100px 20px;
+      animation: fadeInSlide 1.2s ease;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: url('https://images.unsplash.com/photo-1587202372775-d519f31e41ad?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(10, 15, 30, 0.85);
+      z-index: -1;
+    }
+
+    @keyframes fadeInSlide {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+
+    p {
+      font-size: 1.4rem;
+      color: #ffd700;
+    }
+
+    a.back {
+      margin-top: 40px;
+      display: inline-block;
+      padding: 10px 20px;
+      border: 2px solid #fff;
+      border-radius: 8px;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    a.back:hover {
+      background: #fff;
+      color: #004e92;
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+
+    .logo {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      border: 2px solid #fff;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  
+
+  <h1>Contact Me</h1>
+  <p>📧 Email: <strong>workformonarch@gmail.com</strong></p>
+  <a class="back" href="paro.html">← Back to Home</a>
+
+  <footer>
+    &copy; 2025 Praveen Yadav. All rights reserved. | Designed & developed with passion and precision.
+  </footer>
+</body>
+</html>
+

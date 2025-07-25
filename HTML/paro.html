@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pranumann | Official Portfolio</title>
+    <link rel="icon" href="profile.png" type="image/jpeg" sizes="32x32" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('https://images.unsplash.com/photo-1587202372775-d519f31e41ad?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(10, 15, 30, 0.8);
+            z-index: -1;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background: rgba(0, 0, 0, 0.6);
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+            order: 2;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: 0.3s;
+            padding: 5px 0;
+        }
+
+        nav a:hover {
+            color: #ffcc00;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+            margin-left: 20px;
+        }
+
+        .auth-buttons a {
+            background: #ffcc00;
+            color: black;
+            padding: 8px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+        .auth-buttons a:hover {
+            background: #e6b800;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            padding: 15px 0;
+            order: 3;
+        }
+
+        .search-form {
+            display: flex;
+            background: white;
+            border-radius: 30px;
+            padding: 5px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .search-form input {
+            flex: 1;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px 0 0 30px;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .search-form button {
+            border: none;
+            background: #ffcc00;
+            color: black;
+            padding: 10px 25px;
+            font-weight: bold;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .search-form button:hover {
+            background: #e6b800;
+        }
+
+        main {
+            text-align: center;
+            padding: 60px 20px;
+            flex-grow: 1;
+        }
+
+        .hero-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 0 15px #fff;
+            margin-bottom: 20px;
+            border: none;
+        }
+
+        h1 {
+            font-size: 2.7rem;
+            margin-bottom: 10px;
+            text-shadow: none;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            color: #ccc;
+            margin-bottom: 30px;
+        }
+
+        .btn-group {
+            margin-top: 30px;
+        }
+
+        .btn-group a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 25px;
+            border: 2px solid #fff;
+            border-radius: 25px;
+            color: #fff;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .btn-group a:hover {
+            background: #fff;
+            color: #0a1e30;
+            box-shadow: 0 0 12px #fff;
+            transform: none;
+        }
+
+        .feedback {
+            margin-top: 50px;
+            background: none;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        .feedback p {
+            margin-bottom: 15px;
+            font-size: inherit;
+            color: inherit;
+        }
+
+        .stars i {
+            font-size: 1.8rem;
+            color: #ccc;
+            cursor: pointer;
+            transition: 0.3s;
+            margin: 0;
+        }
+
+        .stars i:hover,
+        .stars i.active {
+            color: gold;
+            transform: scale(1.2);
+            text-shadow: none;
+        }
+
+        /* --- START: Free Trial Section with Homepage Background Style --- */
+        .free-trial-section {
+            position: relative;
+            padding: 60px 20px;
+            margin-top: 60px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            overflow: hidden; /* Important for pseudo-elements */
+            background: transparent; /* Make section transparent to see pseudo-element */
+            z-index: 1; /* Ensure it's above body::before */
+            border: 2px solid rgba(255, 204, 0, 0.3); /* Keep subtle accent border */
+        }
+
+        .free-trial-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1587202372775-d519f31e41ad?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+            filter: blur(5px); /* Apply blur to the background image */
+            transform: scale(1.05); /* Slightly zoom in blurred background to avoid edges */
+            z-index: -1; /* Place behind content */
+            border-radius: 15px; /* Match parent's border-radius */
+        }
+
+        .free-trial-section::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 15, 30, 0.7); /* Dark overlay */
+            z-index: -1; /* Place behind content */
+            border-radius: 15px; /* Match parent's border-radius */
+        }
+
+        .free-trial-section h3 {
+            font-size: 2.5rem;
+            color: #ffcc00;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            position: relative;
+            z-index: 2; /* Ensure text is above overlays */
+        }
+
+        .free-trial-section p {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2; /* Ensure text is above overlays */
+        }
+
+        .free-trial-section .price-highlight {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 25px;
+            color: #ffcc00;
+            position: relative;
+            z-index: 2; /* Ensure text is above overlays */
+        }
+
+        .free-trial-section .cta-button {
+            display: inline-block;
+            background: #ff6ec7;
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: 0.4s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2; /* Ensure button is above overlays */
+            border: 2px solid transparent;
+        }
+
+        .free-trial-section .cta-button:hover {
+            background: #ff4da6;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            border: 2px solid white;
+        }
+        /* --- END: Free Trial Section with Homepage Background Style --- */
+
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-top: auto;
+            position: relative;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            margin: 0 15px;
+            font-size: 1.5rem;
+            transition: 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.2);
+        }
+
+        .social-icons .fa-instagram {
+            color: #ff6ec7;
+        }
+
+        .social-icons .fa-linkedin {
+            color: #0A66C2;
+        }
+
+        .social-icons .fa-github {
+            color: #333; /* For dark background, consider #fff or #aaa for better visibility */
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px 20px;
+            }
+
+            .logo {
+                margin-bottom: 15px;
+                width: 100%;
+                text-align: center;
+            }
+
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+
+            nav {
+                flex-direction: column;
+                background: rgba(0, 0, 0, 0.8);
+                position: absolute;
+                top: 70px;
+                right: 20px;
+                padding: 15px;
+                border-radius: 10px;
+                display: none;
+                width: 80%;
+                max-width: 250px;
+                align-items: stretch;
+                gap: 15px;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            }
+
+            nav.show {
+                display: flex;
+            }
+
+            nav a {
+                padding: 10px 15px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            nav a:last-child {
+                border-bottom: none;
+            }
+
+            .auth-buttons {
+                flex-direction: column;
+                margin-left: 0;
+                margin-top: 20px;
+                width: 100%;
+            }
+
+            .auth-buttons a {
+                width: 100%;
+                text-align: center;
+            }
+
+            .search-container {
+                padding: 10px 0;
+            }
+
+            .btn-group a {
+                display: block;
+                margin: 12px auto;
+                width: 80%;
+                max-width: 300px;
+            }
+
+            h1 {
+                font-size: 2.7rem;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            .free-trial-section {
+                padding: 40px 15px;
+            }
+
+            .free-trial-section h3 {
+                font-size: 1.8rem;
+            }
+
+            .free-trial-section p {
+                font-size: 1rem;
+            }
+
+            footer .social-icons {
+                position: static;
+                transform: none;
+                margin-top: 15px;
+            }
+        }
+
+        @keyframes blink {
+            0%,
+            100% {
+                border-color: transparent;
+            }
+            50% {
+                border-color: white;
+            }
+        }
+
+        #typing-logo {
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid white;
+            animation: blink 0.8s step-end infinite;
+        }
+
+        /* --- START: Modal Styles with Homepage Background Style --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.85); /* Slightly darker overlay for modal backdrop */
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            position: relative; /* Needed for its own ::before/::after */
+            margin: auto;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+            transform: scale(0.9);
+            opacity: 0;
+            animation: modalPopIn 0.3s forwards ease-out;
+            border: 2px solid #ffcc00;
+            background: transparent; /* Make content transparent to see pseudo-element */
+            z-index: 1; /* Ensure it's above modal background */
+            overflow: hidden; /* Ensure blurred background stays within bounds */
+        }
+
+        .modal-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1587202372775-d519f31e41ad?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+            filter: blur(5px); /* Apply blur to the background image */
+            transform: scale(1.05); /* Slightly zoom in blurred background to avoid edges */
+            z-index: -1; /* Place behind modal content */
+            border-radius: 15px; /* Match parent's border-radius */
+        }
+
+        .modal-content::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 15, 30, 0.7); /* Dark overlay */
+            z-index: -1; /* Place behind modal content */
+            border-radius: 15px; /* Match parent's border-radius */
+        }
+
+        @keyframes modalPopIn {
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .close-button {
+            color: #aaa;
+            font-size: 35px;
+            font-weight: bold;
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 10; /* Ensure close button is always on top */
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: #ffcc00;
+            text-decoration: none;
+            transform: rotate(90deg);
+        }
+
+        .modal-content h3 {
+            font-size: 2.2rem;
+            color: #ffcc00;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 2; /* Ensure text is above overlays */
+        }
+
+        .modal-content form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: relative;
+            z-index: 2; /* Ensure form elements are above overlays */
+        }
+
+        .modal-content input[type="email"],
+        .modal-content input[type="password"],
+        .modal-content input[type="text"] {
+            width: 100%;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.1); /* Transparent input background */
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s ease;
+            box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-content input[type="email"]::placeholder,
+        .modal-content input[type="password"]::placeholder,
+        .modal-content input[type="text"]::placeholder {
+            color: #ccc;
+        }
+
+        .modal-content input[type="email"]:focus,
+        .modal-content input[type="password"]:focus,
+        .modal-content input[type="text"]:focus {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+            border: 1px solid #ffcc00;
+        }
+
+        .modal-content button[type="submit"] {
+            background: #ffcc00;
+            color: #1e3c72;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s ease;
+            margin-top: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-content button[type="submit"]:hover {
+            background: #e6b800;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content .switch-form {
+            margin-top: 20px;
+            font-size: 0.95rem;
+            color: #e0e0e0;
+            position: relative;
+            z-index: 2; /* Ensure text is above overlays */
+        }
+
+        .modal-content .switch-form a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .modal-content .switch-form a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        /* Password requirements styling */
+        .password-requirements {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 10px 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+            text-align: left;
+            font-size: 0.85rem;
+            color: #ccc;
+            position: relative;
+            z-index: 2; /* Ensure this element is above overlays */
+        }
+
+        .password-requirements p {
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .password-requirements .fa-check {
+            color: #0f0;
+            margin-right: 8px;
+        }
+
+        .password-requirements .fa-times {
+            color: #f00;
+            margin-right: 8px;
+        }
+        /* --- END: Modal Styles with Homepage Background Style --- */
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <span id="typing-logo"></span>
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav id="menu">
+            <a href="#">Home</a>
+            <a href="about.html">About</a>
+            <a href="faq.html">Ask Me</a>
+            <a href="photos.html">Photos</a>
+            <a href="videos.html">Videos</a>
+            <a href="contact.html">Contact</a>
+            <div class="auth-buttons desktop-only">
+                <a href="#" onclick="openModal('signIn')">Sign In</a>
+                <a href="#" onclick="openModal('signUp')">Sign Up</a>
+            </div>
+        </nav>
+        <div class="auth-buttons mobile-only">
+            <a href="#" onclick="openModal('signIn')">Sign In</a>
+            <a href="#" onclick="openModal('signUp')">Sign Up</a>
+        </div>
+        <div class="search-container">
+            <form action="search.html" method="get" class="search-form" role="search"
+                aria-label="Search Praveen's Portfolio">
+                <input type="text" name="q" placeholder="Search about Praveen..." aria-label="Search query" required />
+                <button type="submit" title="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+    </header>
+
+    <main>
+        <img src="pranumann.jpg" alt="Pranumann" class="hero-img" />
+        <h1>Praveen Yadav</h1>
+        <h2>B.Tech CSE | Dumka Engineering College | Official Portfolio</h2>
+
+        <div class="btn-group">
+            <a href="about.html">About Me</a>
+            <a href="faq.html">Ask Me Questions</a>
+            <a href="photos.html">Photos</a>
+            <a href="videos.html">Videos</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="feedback">
+            <p>Did you like my website? Rate it below:</p>
+            <div class="stars" id="stars">
+                <i class="fas fa-star" data-rating="1"></i>
+                <i class="fas fa-star" data-rating="2"></i>
+                <i class="fas fa-star" data-rating="3"></i>
+                <i class="fas fa-star" data-rating="4"></i>
+                <i class="fas fa-star" data-rating="5"></i>
+            </div>
+        </div>
+
+        <section class="free-trial-section">
+            <h3>Start Your Journey to Web Development!</h3>
+            <p>
+                Learn how to create stunning websites just like this one! Our comprehensive course, tailored for
+                beginners, will guide you through all the essentials.
+            </p>
+            <p class="price-highlight">
+                Courses start from only ₹299!
+            </p>
+            <a href="purchase.html#purchase" class="cta-button">Start Free Trial Now</a>
+        </section>
+    </main>
+
+    <footer>
+        <div>
+            © 2025 Pranumann | Made with ❤️ at Dumka Engineering College
+        </div>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/pranumann" target="_blank" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/pranumann" target="_blank" title="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/pranumannn" target="_blank" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+    </footer>
+
+    <div id="signInModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('signInModal')">×</span>
+            <h3>Sign In</h3>
+            <form onsubmit="handleAuthSubmit(event, 'signIn')">
+                <input type="email" placeholder="Email" required />
+                <input type="password" placeholder="Password" required />
+                <button type="submit">Sign In</button>
+            </form>
+            <div class="switch-form">
+                Don't have an account? <a href="#" onclick="switchForm('signInModal', 'signUpModal')">Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="signUpModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('signUpModal')">×</span>
+            <h3>Create Account</h3>
+            <form onsubmit="handleAuthSubmit(event, 'signUp')">
+                <input type="text" placeholder="Username" required />
+                <input type="email" placeholder="Email" required />
+                <input type="password" id="signUpPassword" placeholder="Password" required
+                    onkeyup="checkPasswordStrength()" />
+                <div class="password-requirements">
+                    <p id="req-length"><i class="fas fa-times"></i> Min 8 characters</p>
+                    <p id="req-upper"><i class="fas fa-times"></i> Uppercase letter</p>
+                    <p id="req-lower"><i class="fas fa-times"></i> Lowercase letter</p>
+                    <p id="req-digit"><i class="fas fa-times"></i> Number</p>
+                    <p id="req-special"><i class="fas fa-times"></i> Special character</p>
+                </div>
+                <input type="password" placeholder="Confirm Password" required />
+                <button type="submit">Sign Up</button>
+            </form>
+            <div class="switch-form">
+                Already have an account? <a href="#" onclick="switchForm('signUpModal', 'signInModal')">Sign In</a>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('menu').classList.toggle('show');
+            const authButtonsMobile = document.querySelector('.auth-buttons.mobile-only');
+            if (authButtonsMobile) {
+                authButtonsMobile.style.display = document.getElementById('menu').classList.contains('show') ? 'none' : 'flex';
+            }
+        }
+
+        const stars = document.querySelectorAll('#stars i');
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                stars.forEach(s => s.classList.remove('active'));
+                star.classList.add('active');
+                alert('Thanks for rating: ' + star.dataset.rating + ' star(s)!');
+            });
+        });
+
+        const text = "Pranumann";
+        let i = 0;
+        let isDeleting = false;
+        const speed = 100;
+        const pause = 1500;
+
+        function loopTyping() {
+            const target = document.getElementById("typing-logo");
+
+            if (!target) return;
+
+            if (isDeleting) {
+                target.innerHTML = text.substring(0, i--);
+            } else {
+                target.innerHTML = text.substring(0, i++);
+            }
+
+            if (!isDeleting && i === text.length + 1) {
+                setTimeout(() => {
+                    isDeleting = true;
+                    loopTyping();
+                }, pause);
+                return;
+            }
+
+            if (isDeleting && i < 0) {
+                isDeleting = false;
+                setTimeout(loopTyping, 500);
+                return;
+            }
+
+            setTimeout(loopTyping, isDeleting ? 50 : speed);
+        }
+
+        window.onload = function () {
+            loopTyping();
+            const authButtonsMobile = document.querySelector('.auth-buttons.mobile-only');
+            if (authButtonsMobile) {
+                authButtonsMobile.style.display = window.innerWidth <= 768 ? 'flex' : 'none';
+            }
+        };
+
+        function openModal(modalName) {
+            const modalId = modalName + 'Modal';
+            document.getElementById(modalId).style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        function switchForm(currentModalId, nextModalId) {
+            closeModal(currentModalId);
+            openModal(nextModalId.replace('Modal', ''));
+        }
+
+        function checkPasswordStrength() {
+            const passwordInput = document.getElementById('signUpPassword');
+            if (!passwordInput) return;
+
+            const password = passwordInput.value;
+            const requirements = {
+                length: { regex: /.{8,}/, element: document.getElementById('req-length') },
+                upper: { regex: /[A-Z]/, element: document.getElementById('req-upper') },
+                lower: { regex: /[a-z]/, element: document.getElementById('req-lower') },
+                digit: { regex: /[0-9]/, element: document.getElementById('req-digit') },
+                special: { regex: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/, element: document.getElementById('req-special') }
+            };
+
+            for (const key in requirements) {
+                const { regex, element } = requirements[key];
+                if (element) {
+                    if (regex.test(password)) {
+                        element.querySelector('i').classList.remove('fa-times');
+                        element.querySelector('i').classList.add('fa-check');
+                        element.style.color = '#0f0';
+                    } else {
+                        element.querySelector('i').classList.remove('fa-check');
+                        element.querySelector('i').classList.add('fa-times');
+                        element.style.color = '#f00';
+                    }
+                }
+            }
+        }
+
+        function handleAuthSubmit(event, formType) {
+            event.preventDefault();
+
+            const form = event.target;
+            const inputs = form.querySelectorAll('input');
+            let data = {};
+            inputs.forEach(input => {
+                data[input.type === 'password' ? 'password' : input.placeholder.toLowerCase()] = input.value;
+            });
+
+            console.log(`${formType} data:`, data);
+
+            alert(`Successfully attempted ${formType}! (This is a front-end simulation)`);
+            closeModal(formType + 'Modal');
+            form.reset();
+        }
+
+        window.onclick = function (event) {
+            if (event.target.classList.contains('modal')) {
+                closeModal(event.target.id);
+            }
+        }
+
+        window.addEventListener('resize', function() {
+            const authButtonsMobile = document.querySelector('.auth-buttons.mobile-only');
+            const authButtonsDesktop = document.querySelector('.auth-buttons.desktop-only');
+            if (window.innerWidth <= 768) {
+                if (authButtonsMobile) authButtonsMobile.style.display = document.getElementById('menu').classList.contains('show') ? 'none' : 'flex';
+                if (authButtonsDesktop) authButtonsDesktop.style.display = 'none';
+            } else {
+                if (authButtonsMobile) authButtonsMobile.style.display = 'none';
+                if (authButtonsDesktop) authButtonsDesktop.style.display = 'flex';
+            }
+        });
+    </script>
+
+</body>
+
+</html>

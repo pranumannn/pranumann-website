@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thank You! | Pranumann</title>
+    <link rel="icon" href="profile.png" type="image/jpeg" sizes="32x32" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('https://images.unsplash.com/photo-1587202372775-d519f31e41ad?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(10, 15, 30, 0.8);
+            z-index: -1;
+        }
+
+        .thankyou-container {
+            background: transparent;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            border: 2px solid #ffcc00;
+            margin: auto; /* For vertical centering on larger screens if content is short */
+        }
+
+        .thankyou-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1587202372775-d519f31e41ad?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+            filter: blur(5px);
+            transform: scale(1.05);
+            z-index: -1;
+            border-radius: 20px;
+        }
+
+        .thankyou-container::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 15, 30, 0.7);
+            z-index: -1;
+            border-radius: 20px;
+        }
+
+        .thankyou-container img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 0 15px #ffcc00;
+            margin-bottom: 25px;
+        }
+
+        .thankyou-container h1 {
+            font-size: 3rem;
+            color: #ffcc00;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .thankyou-container p {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .thankyou-container .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .thankyou-container .action-buttons a {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .thankyou-container .action-buttons a.home-button {
+            background: #ffcc00;
+            color: #1a2a40;
+        }
+
+        .thankyou-container .action-buttons a.home-button:hover {
+            background: #e6b800;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .thankyou-container .action-buttons a.dashboard-button {
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+        }
+
+        .thankyou-container .action-buttons a.dashboard-button:hover {
+            background: #fff;
+            color: #1a2a40;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        @media (max-width: 600px) {
+            .thankyou-container {
+                padding: 30px 20px;
+            }
+            .thankyou-container h1 {
+                font-size: 2.2rem;
+            }
+            .thankyou-container p {
+                font-size: 1rem;
+            }
+            .thankyou-container .action-buttons a {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="thankyou-container">
+        <img src="pranumann.jpg" alt="Pranumann Logo" />
+        <h1>Thank You for Your Purchase!</h1>
+        <p>Your subscription to Pranumann's Web Development Course is now active. We're thrilled to have you join our learning community!</p>
+        <p>A unique confirmation message and course access details have been sent to your registered email address. Please check your inbox (and spam folder).</p>
+        <p style="font-size: 0.9em; color: #aaa;">For any support, contact us at: <a href="mailto:workformonarch@gmail.com" style="color: #ffcc00; text-decoration: none;">workformonarch@gmail.com</a></p>
+
+        <div class="action-buttons">
+            <a href="paro.html" class="home-button">Go to Homepage</a>
+            <a href="#" class="dashboard-button">Access Your Course</a>
+            </div>
+    </div>
+
+</body>
+
+</html>

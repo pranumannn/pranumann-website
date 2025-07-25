@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FAQ | Praveen Yadav</title>
+  <link rel="icon" href="profile.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      font-family: 'Segoe UI', sans-serif;
+      height: 100%;
+      color: white;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: url('https://images.unsplash.com/photo-1587202372775-d519f31e41ad?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(10, 15, 30, 0.85);
+      z-index: -1;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 25px;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #ffd700;
+    }
+
+    .faq.section {
+      padding: 50px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.05);
+      border-radius: 10px;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .faq h3 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #fff;
+      padding-bottom: 10px;
+    }
+
+    .faq-item {
+      margin-bottom: 25px;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 15px 20px;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+
+    .faq-item:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .faq-item strong {
+      display: block;
+      font-size: 1.2rem;
+      color: #ffd700;
+      margin-bottom: 8px;
+    }
+
+    .faq-item p {
+      font-size: 1rem;
+      color: #eee;
+    }
+
+    .faq-item a {
+      color: #ffd700;
+      text-decoration: none;
+    }
+
+    .faq-item a:hover {
+      text-decoration: underline;
+    }
+
+    .ask-form {
+      margin-top: 40px;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .ask-form h4 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: #ffd700;
+      text-align: center;
+    }
+
+    .ask-form input,
+    .ask-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      font-size: 1rem;
+    }
+
+    .ask-form input::placeholder,
+    .ask-form textarea::placeholder {
+      color: #ccc;
+    }
+
+    .ask-form button {
+      display: block;
+      width: 100%;
+      background-color: #ffd700;
+      color: black;
+      padding: 12px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .ask-form button:hover {
+      background-color: #e5c100;
+    }
+
+    .back-home {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .back-home a {
+      color: #ffd700;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .back-home a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+   <header>
+  <div style="display: flex; align-items: center;">
+    <img src="pranumann.jpg" alt="Praveen Yadav Profile Photo" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 12px; box-shadow: 0 0 5px #ffd700;">
+    <div class="logo">Praveen Yadav</div>
+  </div>
+  <nav>
+    <a href="paro.html">Home</a>
+  </nav>
+</header>
+
+
+  <section class="faq section">
+    <h3>Ask Me Questions</h3>
+
+    <!-- FAQ Items -->
+    <div class="faq-item">
+      <strong>1. Who is Praveen Yadav?</strong>
+      <p>Praveen Yadav is a passionate B.Tech 1st year Computer Science student at Dumka Engineering College. He is 20 years old and aims to become a software engineer.</p>
+    </div>
+    <div class="faq-item">
+      <strong>2. What is Praveen Yadav’s Instagram ID?</strong>
+      <p>You can follow him here: <a href="https://instagram.com/pranumann" target="_blank">@pranumann</a></p>
+    </div>
+    <div class="faq-item">
+      <strong>3. Does Praveen use Facebook?</strong>
+      <p>No, currently he is not active on Facebook.</p>
+    </div>
+    <div class="faq-item">
+      <strong>4. Where is Praveen from?</strong>
+      <p>He is from Jharkhand and studies at Dumka Engineering College.</p>
+    </div>
+    <div class="faq-item">
+      <strong>5. What are Praveen's hobbies?</strong>
+      <p>He enjoys BGMI, cricket, chess, football, and exploring new technology.</p>
+    </div>
+    <div class="faq-item">
+      <strong>6. What's your dream job, Praveen?</strong>
+      <p>To become a full-stack software engineer and build useful applications.</p>
+    </div>
+    <div class="faq-item">
+      <strong>7. Can Praveen solve a Rubik's Cube?</strong>
+      <p>Not yet... but it's on the to-learn list 😉</p>
+    </div>
+    <div class="faq-item">
+      <strong>8. What's your favorite programming language?</strong>
+      <p>C++, because it teaches logic and problem-solving like a ninja! 💻</p>
+    </div>
+    <div class="faq-item">
+      <strong>9. If you were a superhero, what would be your power?</strong>
+      <p>Debug anything with a single line of code! 🦸‍♂️</p>
+    </div>
+    <div class="faq-item">
+      <strong>10. Can I contact Praveen?</strong>
+      <p>Absolutely! Visit the <a href="contact.html">Contact</a> page for email or social links.</p>
+    </div>
+
+    <!-- Ask Question Form -->
+    <div class="ask-form">
+      <h4>Ask Your Own Question</h4>
+      <form action="thank.html" method="GET">
+
+        <input type="text" name="name" placeholder="Your Name (optional)">
+        <input type="email" name="email" placeholder="Your Email (optional)">
+        <textarea name="question" rows="5" placeholder="Type your question here..." required></textarea>
+        <button type="submit">Submit Question</button>
+      </form>
+    </div>
+
+    <div class="back-home"><a href="paro.html">⬅ Back to Home</a></div>
+  </section>
+</body>
+</html>
